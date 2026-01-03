@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giftora – Gifts that speak for you</title>
+  <!-- Tailwind CDN (for quick demo; for production use a build setup) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Poppins', 'system-ui', 'sans-serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ink: '#070B10',
+            inkSoft: '#0F1724',
+            accentBlue: '#4F8CFF',
+            accentPink: '#FF6F91',
+            accentMint: '#3AD6A4',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-6px)' },
+            },
+          },
+          animation: {
+            float: 'float 5s ease-in-out infinite',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Simple CSS for scroll reveal -->
+  <style>
+    .animate-section {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 700ms ease-out, transform 700ms ease-out;
+      will-change: opacity, transform;
+    }
+    .animate-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="min-h-full bg-ink text-slate-50 font-body antialiased">
+  <!-- Levitating interactive background -->
+  <div class="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-black via-slate-900 to-black">
+    <div class="pointer-events-none absolute -left-40 top-10 h-80 w-80 rounded-full bg-accentPink/40 blur-3xl animate-pulse"></div>
+    <div class="pointer-events-none absolute -right-40 top-40 h-96 w-96 rounded-full bg-accentBlue/40 blur-3xl animate-[ping_5s_ease-in-out_infinite]"></div>
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08)_0,_transparent_48%)]"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-5xl px-4 pb-16 pt-6 sm:px-6 lg:px-8">
+    <!-- HEADER -->
+    <header class="mb-6 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-2xl bg-gradient-to-tr from-slate-900 via-accentBlue to-accentPink shadow-[0_16px_40px_rgba(0,0,0,0.8)] ring-1 ring-white/40"></div>
+        <div>
+          <div class="font-heading text-xs font-semibold tracking-[0.28em] text-slate-200">
+            GIFTORA
+          </div>
+          <div class="text-[0.7rem] text-slate-400">
+            Gifts that speak for you
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 text-xs text-slate-300">
+        <span class="inline-flex h-2 w-2 rounded-full bg-accentMint shadow-[0_0_10px_rgba(58,214,164,0.9)]"></span>
+        <span>Same-day delivery in selected cities</span>
+      </div>
+    </header>
+
+    <main class="space-y-6">
+      <!-- HERO -->
+      <section
+        data-animate="true"
+        class="animate-section grid gap-6 rounded-3xl border border-white/10 bg-slate-900/40 p-5 shadow-2xl backdrop-blur-xl sm:grid-cols-2 sm:p-7">
+        <div class="space-y-4">
+          <div class="inline-flex flex-col gap-2">
+            <p class="text-[0.7rem] uppercase tracking-[0.22em] text-slate-400">
+              Gifts that speak for you
+            </p>
+            <div class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-slate-500">
+              <span class="rounded-full border border-accentBlue/60 bg-slate-900/80 px-2 py-0.5 text-[0.65rem] text-slate-100">
+                Emotion-based gifting
+              </span>
+              <span>Birthdays • Anniversaries • Just because</span>
+            </div>
+          </div>
+
+          <h1 class="mt-1 font-heading text-3xl font-semibold leading-tight tracking-tight sm:text-[2.4rem]">
+            Not sure what to <span class="bg-gradient-to-r from-slate-50 via-accentBlue to-accentPink bg-clip-text text-transparent">gift?</span>
+          </h1>
+
+          <p class="max-w-md text-sm text-slate-300">
+            Let Giftora say what words can't. Thoughtfully curated gifts based on emotions, relationships, and the moments that matter most.
+          </p>
+
+          <p class="text-xs text-slate-400">
+            Tell us how you feel — Giftora wraps it perfectly.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <!-- Primary CTA ONLY -->
+            <button
+              class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 bg-gradient-to-r from-accentBlue to-accentPink px-5 py-2.5 text-xs font-medium text-white shadow-[0_14px_32px_rgba(0,0,0,0.9)] transition-transform duration-150 active:scale-95 hover:scale-[1.02] focus:outline-none">
+              <span
+                class="pointer-events-none absolute inset-0 -translate-x-full bg-[radial-gradient(circle_at_0_0,rgba(255,255,255,0.35)_0,transparent_55%)] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"></span>
+              <span class="relative">🎁 Find the perfect gift</span>
+            </button>
+
+            <!-- Secondary as text link -->
+            <a href="#best-sellers"
+               class="text-[0.75rem] text-slate-400 hover:text-slate-100">
+              Browse gifts →
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 text-[0.7rem] text-slate-400">
+            <span><span class="font-semibold text-slate-100">60s</span> quiz to your perfect pick</span>
+            <span class="text-slate-600">•</span>
+            <span><span class="font-semibold text-slate-100">Free</span> handwritten note included</span>
+          </div>
+        </div>
+
+        <div
+          class="relative overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-black/80 p-4 shadow-[0_22px_55px_rgba(0,0,0,1)] animate-float">
+          <div
+            class="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-slate-950/90 px-3 py-1 text-[0.7rem] text-slate-100 shadow-xl backdrop-blur">
+            <span class="h-2 w-2 rounded-full bg-accentMint shadow-[0_0_12px_rgba(58,214,164,0.9)]"></span>
+            Live: 3 new gifts curated
+          </div>
+
+          <div class="mt-8 space-y-3 rounded-2xl border border-white/20 bg-slate-900/80 p-3 text-[0.75rem]">
+            <div class="text-[0.8rem] text-slate-200">Tonight’s gifting moodboard</div>
+            <div class="grid grid-cols-1 gap-2 text-[0.72rem] sm:grid-cols-3">
+              <div class="rounded-xl border border-white/15 bg-slate-950/70 p-2 text-xs text-slate-200 shadow-inner">
+                <div class="text-[0.65rem] text-slate-400">Emotion</div>
+                <div class="mt-0.5 font-semibold">❤️ “I’m proud of you”</div>
+              </div>
+              <div class="rounded-xl border border-white/15 bg-slate-950/70 p-2 text-xs text-slate-200 shadow-inner">
+                <div class="text-[0.65rem] text-slate-400">For</div>
+                <div class="mt-0.5 font-semibold">Best friend</div>
+              </div>
+              <div class="rounded-xl border border-white/15 bg-slate-950/70 p-2 text-xs text-slate-200 shadow-inner">
+                <div class="text-[0.65rem] text-slate-400">Vibe</div>
+                <div class="mt-0.5 font-semibold">Warm, thoughtful, simple</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EMOTION SELECTOR -->
+      <section
+        data-animate="true"
+        class="animate-section space-y-4 rounded-3xl border border-white/10 bg-slate-900/50 p-5 shadow-2xl backdrop-blur-xl">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 class="font-heading text-lg font-semibold">What are you feeling right now?</h2>
+            <p class="max-w-md text-xs text-slate-400">
+              Choose an emotion — Giftora turns it into a curated gift collection that speaks your heart.
+            </p>
+          </div>
+          <p class="text-[0.7rem] text-slate-500">
+            Tap a feeling to see matching gifts.
+          </p>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          <!-- Love -->
+          <button
+            data-emotion="love"
+            class="group relative flex flex-col gap-1 overflow-hidden rounded-2xl border border-white/15 bg-slate-950/80 p-3 text-left text-xs text-slate-100 shadow-xl transition-all duration-200 hover:-translate-y-1.5 hover:border-accentPink/80 hover:shadow-[0_20px_46px_rgba(0,0,0,1)]">
+            <span
+              class="pointer-events-none absolute inset-0 bg-gradient-to-b from-accentPink/25 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+            <span
+              class="absolute right-2 top-2 rounded-full border border-white/30 bg-slate-900/80 px-2 py-0.5 text-[0.6rem] text-slate-100">
+              For partners
+            </span>
+            <span class="relative text-base transition-transform duration-200 group-hover:-translate-y-0.5">❤️</span>
+            <span class="relative font-semibold text-[0.8rem] transition-transform duration-200 group-hover:-translate-y-0.5">
+              Love
+            </span>
+            <span class="relative text-[0.7rem] text-slate-400 transition-colors duration-200 group-hover:text-slate-200">
+              Romantic, cozy, “just because” gifts
+            </span>
+          </button>
+
+          <!-- Happy -->
+          <button
+            data-emotion="happy"
+            class="group relative flex flex-col gap-1 overflow-hidden rounded-2xl border border-white/15 bg-slate-950/80 p-3 text-left text-xs text-slate-100 shadow-xl transition-all duration-200 hover:-translate-y-1.5 hover:border-accentBlue/80 hover:shadow-[0_20px_46px_rgba(0,0,0,1)]">
+            <span
+              class="pointer-events-none absolute inset-0 bg-gradient-to-b from-accentBlue/25 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+            <span
+              class="absolute right-2 top-2 rounded-full border border-white/30 bg-slate-900/80 px-2 py-0.5 text-[0.6rem]">
+              Celebrate
+            </span>
+            <span class="relative text-base transition-transform duration-200 group-hover:-translate-y-0.5">😊</span>
+            <span class="relative font-semibold text-[0.8rem] transition-transform duration-200 group-hover:-translate-y-0.5">
+              Happy
+            </span>
+            <span class="relative text-[0.7rem] text-slate-400 transition-colors duration-200 group-hover:text-slate-200">
+              Birthdays, good news, little wins
+            </span>
+          </button>
+
+          <!-- Proud -->
+          <button
+            data-emotion="proud"
+            class="group relative flex flex-col gap-1 overflow-hidden rounded-2xl border border-white/15 bg-slate-950/80 p-3 text-left text-xs text-slate-100 shadow-xl transition-all duration-200 hover:-translate-y-1.5 hover:border-accentBlue/80 hover:shadow-[0_20px_46px_rgba(0,0,0,1)]">
+            <span
+              class="pointer-events-none absolute inset-0 bg-gradient-to-b from-accentBlue/25 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+            <span
+              class="absolute right-2 top-2 rounded-full border border-white/30 bg-slate-900/80 px-2 py-0.5 text-[0.6rem]">
+              Milestones
+            </span>
+            <span class="relative text-base transition-transform duration-200 group-hover:-translate-y-0.5">🏆</span>
+            <span class="relative font-semibold text-[0.8rem] transition-transform duration-200 group-hover:-translate-y-0.5">
+              Proud
+            </span>
+            <span class="relative text-[0.7rem] text-slate-400 transition-colors duration-200 group-hover:text-slate-200">
+              New jobs, results, promotions
+            </span>
+          </button>
+
+          <!-- Thank You -->
+          <button
+            data-emotion="thank-you"
+            class="group relative flex flex-col gap-1 overflow-hidden rounded-2xl border border-white/15 bg-slate-950/80 p-3 text-left text-xs text-slate-100 shadow-xl transition-all duration-200 hover:-translate-y-1.5 hover:border-accentMint/80 hover:shadow-[0_20px_46px_rgba(0,0,0,1)]">
+            <span
+              class="pointer-events-none absolute inset-0 bg-gradient-to-b from-accentMint/25 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+            <span
+              class="absolute right-2 top-2 rounded-full border border-white/30 bg-slate-900/80 px-2 py-0.5 text-[0.6rem]">
+              Gratitude
+            </span>
+            <span class="relative text-base transition-transform duration-200 group-hover:-translate-y-0.5">🙏</span>
+            <span class="relative font-semibold text-[0.8rem] transition-transform duration-200 group-hover:-translate-y-0.5">
+              Thank You
+            </span>
+            <span class="relative text-[0.7rem] text-slate-400 transition-colors duration-200 group-hover:text-slate-200">
+              For the people who show up
+            </span>
+          </button>
+
+          <!-- Sorry -->
+          <button
+            data-emotion="sorry"
+            class="group relative flex flex-col gap-1 overflow-hidden rounded-2xl border border-white/15 bg-slate-950/80 p-3 text-left text-xs text-slate-100 shadow-xl transition-all duration-200 hover:-translate-y-1.5 hover:border-accentPink/80 hover:shadow-[0_20px_46px_rgba(0,0,0,1)]">
+            <span
+              class="pointer-events-none absolute inset-0 bg-gradient-to-b from-accentPink/25 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+            <span
+              class="absolute right-2 top-2 rounded-full border border-white/30 bg-slate-900/80 px-2 py-0.5 text-[0.6rem]">
+              Make it right
+            </span>
+            <span class="relative text-base transition-transform duration-200 group-hover:-translate-y-0.5">😔</span>
+            <span class="relative font-semibold text-[0.8rem] transition-transform duration-200 group-hover:-translate-y-0.5">
+              Sorry
+            </span>
+            <span class="relative text-[0.7rem] text-slate-400 transition-colors duration-200 group-hover:text-slate-200">
+              Gentle ways to say “I messed up”
+            </span>
+          </button>
+
+          <!-- Miss You -->
+          <button
+            data-emotion="miss-you"
+            class="group relative flex flex-col gap-1 overflow-hidden rounded-2xl border border-white/15 bg-slate-950/80 p-3 text-left text-xs text-slate-100 shadow-xl transition-all duration-200 hover:-translate-y-1.5 hover:border-accentBlue/80 hover:shadow-[0_20px_46px_rgba(0,0,0,1)]">
+            <span
+              class="pointer-events-none absolute inset-0 bg-gradient-to-b from-accentBlue/25 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+            <span
+              class="absolute right-2 top-2 rounded-full border border-white/30 bg-slate-900/80 px-2 py-0.5 text-[0.6rem]">
+              Long distance
+            </span>
+            <span class="relative text-base transition-transform duration-200 group-hover:-translate-y-0.5">🫂</span>
+            <span class="relative font-semibold text-[0.8rem] transition-transform duration-200 group-hover:-translate-y-0.5">
+              Miss You
+            </span>
+            <span class="relative text-[0.7rem] text-slate-400 transition-colors duration-200 group-hover:text-slate-200">
+              For hearts that wish they were closer
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- GIFT FINDER QUIZ -->
+      <section
+        data-animate="true"
+        class="animate-section space-y-4 rounded-3xl border border-white/10 bg-slate-900/50 p-5 shadow-2xl backdrop-blur-xl">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 class="font-heading text-lg font-semibold">Gifting made effortless</h2>
+            <p class="max-w-md text-xs text-slate-400">
+              Answer a few quick questions and discover a gift that feels just right for who they are and what they mean to you.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div class="space-y-2">
+            <button
+              class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 bg-gradient-to-r from-accentBlue to-accentPink px-5 py-2.5 text-xs font-medium text-white shadow-[0_14px_32px_rgba(0,0,0,0.9)] transition-transform duration-150 active:scale-95 hover:scale-[1.02] focus:outline-none">
+              <span
+                class="pointer-events-none absolute inset-0 -translate-x-full bg-[radial-gradient(circle_at_0_0,rgba(255,255,255,0.32)_0,transparent_55%)] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"></span>
+              <span class="relative">✨ Start Gift Finder</span>
+            </button>
+            <p class="text-[0.7rem] text-slate-300">⏱ Takes less than 60 seconds</p>
+            <p class="max-w-sm text-[0.75rem] text-slate-400">
+              We’ll ask about who you’re gifting, your budget, and how you want them to feel when they open it — then match you with a ready-to-gift box.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <div class="relative h-2 w-40 overflow-hidden rounded-full bg-slate-900/80 ring-1 ring-slate-700/70">
+              <div
+                class="h-full w-1/3 animate-[pulse_2s_ease-in-out_infinite] rounded-full bg-gradient-to-r from-accentBlue to-accentMint shadow-[0_0_8px_rgba(79,140,255,0.9)]">
+              </div>
+            </div>
+            <p class="max-w-xs text-[0.7rem] text-slate-400">
+              Guided, interactive flow designed to reduce choice overload and boost confidence in your pick.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEST SELLERS -->
+      <section
+        id="best-sellers"
+        data-animate="true"
+        class="animate-section space-y-4 rounded-3xl border border-white/10 bg-slate-900/50 p-5 shadow-2xl backdrop-blur-xl">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 class="font-heading text-lg font-semibold">Trusted by people who care deeply</h2>
+            <p class="max-w-md text-xs text-slate-400">
+              Best-selling gift boxes that turned silent feelings into teary smiles, tight hugs, and “how did you know?” moments.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-3">
+          <!-- Product 1 -->
+          <article
+            class="flex flex-col gap-2 rounded-2xl border border-white/15 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-black/90 p-3 text-xs shadow-[0_18px_40px_rgba(0,0,0,1)]">
+            <div
+              class="inline-flex items-center gap-1 rounded-full border border-accentPink/50 bg-slate-950/80 px-2 py-0.5 text-[0.7rem] text-pink-100">
+              ❤️ Romantic
+              <span class="text-[0.65rem] text-pink-200/80">For moments when words aren’t enough.</span>
+            </div>
+            <div class="text-[0.85rem] font-semibold text-slate-100">Midnight Letters Box</div>
+            <p class="text-[0.72rem] text-slate-400">
+              Scented candle, keepsake note cards, and a tiny memory jar for your favourite shared moments.
+            </p>
+            <div class="mt-1 flex items-center justify-between gap-2">
+              <div>
+                <div class="text-sm font-semibold text-pink-100">₹1,899</div>
+                <div class="text-[0.7rem] text-slate-500">4–6 items · Ships in 24 hrs</div>
+                <div class="text-[0.65rem] text-slate-500">
+                  ⭐ 4.9 · Gifted 2,300+ times
+                </div>
+              </div>
+              <button
+                class="group relative inline-flex items-center overflow-hidden rounded-full border border-white/25 bg-slate-950/80 px-3 py-1.5 text-[0.72rem] text-slate-100 transition-all hover:scale-[1.02] hover:border-accentPink/70 focus:outline-none">
+                <span
+                  class="pointer-events-none absolute inset-0 bg-gradient-to-r from-accentPink/20 to-accentBlue/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+                <span class="relative">🛒 Add to Gift Box</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 2 -->
+          <article
+            class="flex flex-col gap-2 rounded-2xl border border-white/15 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-black/90 p-3 text-xs shadow-[0_18px_40px_rgba(0,0,0,1)]">
+            <div
+              class="inline-flex items-center gap-1 rounded-full border border-accentBlue/50 bg-slate-950/80 px-2 py-0.5 text-[0.7rem] text-blue-100">
+              😊 Happy
+              <span class="text-[0.65rem] text-blue-200/80">For their big little wins.</span>
+            </div>
+            <div class="text-[0.85rem] font-semibold text-slate-100">Tiny Wins Celebration Kit</div>
+            <p class="text-[0.72rem] text-slate-400">
+              Confetti card, gourmet chocolate, and a mini desk trophy that says “you did that”.
+            </p>
+            <div class="mt-1 flex items-center justify-between gap-2">
+              <div>
+                <div class="text-sm font-semibold text-slate-50">₹1,299</div>
+                <div class="text-[0.7rem] text-slate-500">3–5 items · Gift-wrap included</div>
+                <div class="text-[0.65rem] text-slate-500">
+                  ⭐ 4.8 · Most gifted this week
+                </div>
+              </div>
+              <button
+                class="group relative inline-flex items-center overflow-hidden rounded-full border border-white/25 bg-slate-950/80 px-3 py-1.5 text-[0.72rem] text-slate-100 transition-all hover:scale-[1.02] hover:border-accentBlue/70 focus:outline-none">
+                <span
+                  class="pointer-events-none absolute inset-0 bg-gradient-to-r from-accentBlue/20 to-accentPink/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+                <span class="relative">🛒 Add to Gift Box</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Product 3 -->
+          <article
+            class="flex flex-col gap-2 rounded-2xl border border-white/15 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-black/90 p-3 text-xs shadow-[0_18px_40px_rgba(0,0,0,1)]">
+            <div
+              class="inline-flex items-center gap-1 rounded-full border border-accentMint/50 bg-slate-950/80 px-2 py-0.5 text-[0.7rem] text-emerald-100">
+              🙏 Thank You
+              <span class="text-[0.65rem] text-emerald-200/80">For quiet superheroes.</span>
+            </div>
+            <div class="text-[0.85rem] font-semibold text-slate-100">Grateful Heart Bundle</div>
+            <p class="text-[0.72rem] text-slate-400">
+              Handwritten note, soothing tea blends, and a gratitude token they’ll keep on their desk.
+            </p>
+            <div class="mt-1 flex items-center justify-between gap-2">
+              <div>
+                <div class="text-sm font-semibold text-emerald-100">₹1,599</div>
+                <div class="text-[0.7rem] text-slate-500">4 items · Personalized message</div>
+                <div class="text-[0.65rem] text-slate-500">
+                  ⭐ 4.9 · Reordered by 63% customers
+                </div>
+              </div>
+              <button
+                class="group relative inline-flex items-center overflow-hidden rounded-full border border-white/25 bg-slate-950/80 px-3 py-1.5 text-[0.72rem] text-slate-100 transition-all hover:scale-[1.02] hover:border-accentMint/70 focus:outline-none">
+                <span
+                  class="pointer-events-none absolute inset-0 bg-gradient-to-r from-accentMint/20 to-accentBlue/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+                <span class="relative">🛒 Add to Gift Box</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PERSONALIZATION -->
+      <section
+        data-animate="true"
+        class="animate-section space-y-4 rounded-3xl border border-white/10 bg-slate-900/50 p-5 shadow-2xl backdrop-blur-xl">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 class="font-heading text-lg font-semibold">Make it personal</h2>
+            <p class="max-w-md text-xs text-slate-400">
+              Because the best gifts feel personal, not generic. Giftora lets you add your own touch to every box.
+            </p>
+          </div>
+        </div>
+
+        <ul class="space-y-2 text-[0.8rem] text-slate-300">
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-sm text-accentMint">✔</span>
+            <span>Add a heartfelt message in your own words.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-sm text-accentMint">✔</span>
+            <span>Choose your wrapping style, colours, and unboxing vibe.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-sm text-accentMint">✔</span>
+            <span>Preview everything before we seal and ship your gift.</span>
+          </li>
+        </ul>
+
+        <p class="text-[0.8rem] text-slate-400">
+          Turn a simple parcel into a memory they’ll keep coming back to.
+        </p>
+      </section>
+
+      <!-- TRUST & DELIVERY -->
+      <section
+        data-animate="true"
+        class="animate-section space-y-4 rounded-3xl border border-white/10 bg-slate-900/50 p-5 shadow-2xl backdrop-blur-xl">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 class="font-heading text-lg font-semibold">Why Giftora?</h2>
+            <p class="max-w-md text-xs text-slate-400">
+              A trusted gifting partner from cart to doorstep — so you can focus on the feeling, not the logistics.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-3">
+          <div
+            class="flex gap-3 rounded-2xl border border-white/15 bg-slate-950/80 p-3 text-[0.8rem] text-slate-200 shadow-xl">
+            <span class="mt-1 text-lg">🚀</span>
+            <div>
+              <div class="text-[0.85rem] font-semibold">Fast &amp; reliable delivery</div>
+              <p class="text-[0.72rem] text-slate-400">
+                Same-city express options, tracked shipping, and smart packaging to keep every surprise safe.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex gap-3 rounded-2xl border border-white/15 bg-slate-950/80 p-3 text-[0.8rem] text-slate-200 shadow-xl">
+            <span class="mt-1 text-lg">🎁</span>
+            <div>
+              <div class="text-[0.85rem] font-semibold">Curated with care</div>
+              <p class="text-[0.72rem] text-slate-400">
+                Each box is handpicked by our gifting stylists to match your emotion, not just an occasion.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex gap-3 rounded-2xl border border-white/15 bg-slate-950/80 p-3 text-[0.8rem] text-slate-200 shadow-xl">
+            <span class="mt-1 text-lg">💖</span>
+            <div>
+              <div class="text-[0.85rem] font-semibold">Made to create memories</div>
+              <p class="text-[0.72rem] text-slate-400">
+                From the first unboxing photo to the “message received” text, we think about the whole moment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REAL MOMENTS (UGC) -->
+      <section
+        data-animate="true"
+        class="animate-section space-y-4 rounded-3xl border border-white/10 bg-slate-900/50 p-5 shadow-2xl backdrop-blur-xl">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 class="font-heading text-lg font-semibold">Moments we helped create</h2>
+            <p class="max-w-md text-xs text-slate-400">
+              From happy tears to surprise smiles, Giftora is already part of stories — and this space is ready for yours.
+            </p>
+          </div>
+          <p class="text-[0.7rem] text-slate-500">
+            Perfect for future Instagram reels and UGC.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <p class="max-w-sm text-[0.8rem] text-slate-300">
+            Soon, you’ll see real reels, photos, and reactions from people who opened a Giftora box. Until then, imagine your moment here — tagged, shared, and saved.
+          </p>
+
+          <div class="grid min-w-[210px] gap-2 text-[0.72rem] text-slate-200 sm:grid-cols-2">
+            <div class="rounded-2xl border border-white/15 bg-slate-950/80 p-3 shadow-inner">
+              <div class="text-[0.7rem] text-slate-400">Snapshot idea</div>
+              <div class="mt-1 font-semibold">“He read the note twice before opening the box.”</div>
+            </div>
+            <div class="rounded-2xl border border-white/15 bg-slate-950/80 p-3 shadow-inner">
+              <div class="text-[0.7rem] text-slate-400">Reel hook</div>
+              <div class="mt-1 font-semibold">“POV: You finally find a gift that says what you couldn’t.”</div>
+            </div>
+            <div class="rounded-2xl border border-white/15 bg-slate-950/80 p-3 shadow-inner">
+              <div class="text-[0.7rem] text-slate-400">Caption prompt</div>
+              <div class="mt-1 font-semibold">“Sometimes a box speaks louder than a paragraph.”</div>
+            </div>
+            <div class="rounded-2xl border border-white/15 bg-slate-950/80 p-3 shadow-inner">
+              <div class="text-[0.7rem] text-slate-400">Hashtag starter</div>
+              <div class="mt-1 font-semibold">#GiftoraMoments · #FeelingsInABox</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section
+        data-animate="true"
+        class="animate-section rounded-3xl border border-white/10 bg-slate-900/60 p-5 text-center shadow-2xl backdrop-blur-xl">
+        <h2 class="font-heading text-xl font-semibold">Let your gift say it all</h2>
+        <p class="mt-2 text-[0.8rem] text-slate-300">
+          Choose how you feel, and Giftora will do the rest — from curation to doorstep.
+        </p>
+        <div class="mt-4">
+          <button
+            class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 bg-gradient-to-r from-accentBlue to-accentPink px-6 py-2.5 text-xs font-medium text-white shadow-[0_16px_40px_rgba(0,0,0,1)] transition-transform duration-150 active:scale-95 hover:scale-[1.03] focus:outline-none">
+            <span
+              class="pointer-events-none absolute inset-0 -translate-x-full bg-[radial-gradient(circle_at_0_0,rgba(255,255,255,0.35)_0,transparent_55%)] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"></span>
+            <span class="relative">🎁 Find the perfect gift</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="mt-6 text-center text-[0.7rem] text-slate-500">
+      Giftora helps you turn feelings into thoughtful gifts — one moment at a time.
+    </footer>
+  </div>
+
+  <!-- Scroll reveal + emotion click handler -->
+  <script>
+    // Reveal-on-scroll for sections
+    const animatedSections = document.querySelectorAll('[data-animate="true"]');
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.16,
+      }
+    );
+
+    animatedSections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // Emotion button handler (future: map to collections)
+    document.querySelectorAll('[data-emotion]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const emotion = btn.dataset.emotion;
+        // Later:
+        // window.location.href = `/collections/${emotion}`;
+        console.log('Selected emotion:', emotion);
+      });
+    });
+  </script>
+</body>
+</html>
